@@ -18,19 +18,18 @@ pipeline {
       docker push $ECR_REPO:$BUILD_TAG_SUFFIX-$GIT_HASH
       '''
       
-      /* 
+      
       sh """
       repo=
-      sed -i \'s/BUILD_TAG_SUFFIX/$BUILD_TAG_SUFFIX/g\' python.yaml
-      sed -i \'s/GIT_HASH/$GIT_HASH/g\' python.yaml
-      sed -i \'s/accountid/$ACCOUNT_ID/g\' python.yaml
+      sed -i \'s/BUILD_TAG_SUFFIX/$BUILD_TAG_SUFFIX/g\' go.yaml
+      sed -i \'s/GIT_HASH/$GIT_HASH/g\' go.yaml
+      sed -i \'s/accountid/$ACCOUNT_ID/g\' go.yaml
       """
       sh '''
-      cat python.yaml
-      kubectl apply -f python.yaml
-      kubectl apply -f pythonsvc.yaml
-      '''
-      */    
+      cat go.yaml
+      kubectl apply -f go.yaml
+      kubectl apply -f gosvc.yaml
+      '''    
       }
     }
   }
