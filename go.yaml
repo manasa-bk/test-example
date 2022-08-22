@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: golang
+  name: golang
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: golang
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: golang
+    spec:
+      containers:
+      - image: go:example
+        name: go
+        resources: {}
+status: {}
+
